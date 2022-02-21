@@ -8,15 +8,7 @@ Created on Fri Feb 18 09:50:30 2022
 
 import scipy.stats as stats
 import math as m 
-import matplotlib.pyplot as plt
 import numpy as np
-from datetime import datetime
-
-#set DPI of all figures 
-
-import matplotlib as mpl
-
-mpl.rcParams['figure.dpi'] = 500
 
 #calculating option price using Black-Scholes 
 
@@ -206,24 +198,3 @@ print('Price according to B-S = ',str(round(option_price(S0, K, vol, r, t, flag)
 print('Price according to Monte Carlo = ',str(round(option_price_MC(S0, K, vol, r, t, flag, steps, paths), 3)))
 
 print('Price according to Binomial Tree= ',str(round(option_price_BT(S0, K, vol, r, t, flag, steps_bt), 3)))
-
-
-cumu_price = 0
-
-mc_price = []
-
-for i in range(1,501):
-    
-    price = option_price_MC(S0, K, vol, r, t, flag, steps, paths)
-    
-    cumu_price += price
-    
-    mc_price.append(cumu_price/i)
-
-plt.plot(mc_price, label = 'Monte-Carlo iterations', linewidth = 1, color = 'k')
-plt.axhline(y = option_price(S0, K, vol, r, t, flag), color = 'r', linewidth = 0.5, linestyle = '--', \
-            label = 'Black-Scholes price')
-plt.xlabel('Iteration number')
-plt.ylabel(r'$\frac{\sum_{i = 1}^n MC~Price_{i}}{n}$')
-plt.title('Monte-Carlo approximation improves through successive iterations')
-plt.legend()
