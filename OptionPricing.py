@@ -6,6 +6,14 @@ Created on Fri Feb 18 09:50:30 2022
 @author: udaytalwar
 """
 
+'''
+References:
+
+ASX Portfolio on YouTube
+Paul Wilmott's "The Mathematics of Financial Derivatives: A Student Introduction"
+
+'''
+
 import scipy.stats as stats
 import math as m 
 import numpy as np
